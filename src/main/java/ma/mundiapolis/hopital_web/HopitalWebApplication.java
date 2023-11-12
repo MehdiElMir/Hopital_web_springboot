@@ -16,7 +16,7 @@ public class HopitalWebApplication {
         SpringApplication.run(HopitalWebApplication.class, args);
     }
 
-    /*@Bean
+    //@Bean
     CommandLineRunner commandLineRunner(PatientRepository patientRepository){
         return args -> {
             patientRepository.save(new Patient(null,"Hassan", new Date(), false,12));
@@ -28,6 +28,6 @@ public class HopitalWebApplication {
                 System.out.println(p.getNom());
             });
         };
-    }*/
+    }
 
 }
