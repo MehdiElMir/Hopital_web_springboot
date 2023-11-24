@@ -11,10 +11,10 @@
 <body>
 <div layout:fragment="content1">
   <div class="col-md-6 offset-3">
-    <form method="post" th:action="@{save(page=${currentPage},keyword=${keyword})}">
+    <form method="post" th:action="@{/admin/save(page=${currentPage},keyword=${keyword})}">
       <div>
         <label for="id">ID :</label>
-        <label th:text="patient.id"></label>
+        <label th:text="${patient.id}"></label>
         <input class="form-control" type="text" name="id" id="id" th:value="${patient.id}" hidden="hidden">
       </div>
       <div>
@@ -34,7 +34,7 @@
       </div>
       <div>
         <label for="malade">Score</label>
-        <input class="form-control" type="text" name="malade" id="score" th:value="${patient.score}">
+        <input class="form-control" type="text" name="score" id="score" th:value="${patient.score}">
         <span class="text-danger" th:errors="${patient.score}"></span>
       </div>
       <button type="submit" class="btn btn-primary">Save</button>

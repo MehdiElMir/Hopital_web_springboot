@@ -34,28 +34,38 @@ public class PatientController {
         model.addAttribute("keyword", keyword);
         return "patients";
     }
+
+
     @GetMapping("/admin/delete")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String delete(Long id, String keyword, int page){
         patientRepository.deleteById(id);
-        return "redirect:/index?page="+page+"&keyword="+keyword;
+        return "redirect:/user/index?page="+page+"&keyword="+keyword;
     }
+
+
 
     @GetMapping("/")
     public String home(){
         return "redirect:/user/index";
     }
-    @GetMapping(path = "/patients")
+
+
+    @GetMapping(path = "/user/patients")
     @ResponseBody
     public List<Patient> listPatients(){
         return patientRepository.findAll();
     }
+
+
     @GetMapping(path = "/admin/formPatients")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String formPatients(Model model){
         model.addAttribute("patient",new Patient());
         return  "formPatients";
     }
+
+
     @PostMapping(path = "/admin/save")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String save(Model model, @Valid Patient patient, BindingResult bindingResult,
@@ -63,14 +73,16 @@ public class PatientController {
                        @RequestParam(defaultValue = "") String keyword){
         if(bindingResult.hasErrors()) return  "formPatients";
         patientRepository.save(patient);
-        return "redirect:/index?page="+page+"&keyword="+keyword;
+        return "redirect:/user/index?page="+page+"&keyword="+keyword;
     }
+
+
     @GetMapping(path = "/admin/editPatient")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String editPatient(Model model, Long id, String keyword, int page){
         Patient patient = patientRepository.findById(id).orElse(null);
         if (patient == null) throw new RuntimeException("Patient introuvable");
-        model.addAttribute("patient",new Patient());
+        model.addAttribute("patient",patient);
         model.addAttribute("currentPage",page);
         model.addAttribute("keyword", keyword);
         return  "editPatient";

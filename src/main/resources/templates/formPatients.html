@@ -11,7 +11,7 @@
 <body>
 <div layout:fragment="content1">
   <div class="col-md-6 offset-3">
-    <form method="post" th:action="@{save}">
+    <form method="post" th:action="@{/admin/save}">
       <div>
         <label for="nom">Nom</label>
         <input class="form-control" type="text" name="nom" id="nom" th:value="${patient.nom}">
@@ -29,7 +29,7 @@
       </div>
       <div>
         <label for="malade">Score</label>
-        <input class="form-control" type="text" name="malade" id="score" th:value="${patient.score}">
+        <input class="form-control" type="text" name="score" id="score" th:value="${patient.score}">
         <span class="text-danger" th:errors="${patient.score}"></span>
       </div>
       <button type="submit" class="btn btn-primary">Save</button>
