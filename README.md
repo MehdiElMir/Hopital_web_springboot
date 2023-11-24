@@ -1,7 +1,18 @@
 <h1>Activité pratique 3</h1>
 <h2>Development Web JEE Spring MVC</h2>
+<h3>Introduction</h3>
+<p>Ce rapport présente le développement d'une application web sécurisée utilisant Spring Boot et Spring Security, centrée sur la gestion des patients. Les étapes incluent la création d'un projet avec les dépendances nécessaires, la mise en place d'entités JPA pour les patients, la configuration de la persistance des données, l'élaboration d'un contrôleur Spring MVC et la création de vues Thymeleaf. La particularité clé du projet est sa souplesse de connexion à H2 ou MySQL. La sécurité est primordiale, avec l'intégration de Spring Security via trois stratégies d'authentification : InMemoryAuthentication, JdbcAuthentication et UserDetailsService. L'objectif final est de fournir une application web fonctionnelle, adaptable et sécurisée, en exploitant pleinement les fonctionnalités de Spring Boot et Spring Security.</p>
 <h3>Objectifs</h3>
 <p>Créer une application web JEE qui permet de gérer des patients</p>
+<h3>Enoncé :</h3>
+<ol>
+<li>Créer un projet spring boot avec les dépendances Web, Spring Data JPA, H2, Lombock, Thymeleaf</li>
+<li>Créer l'entité JPA Patient</li>
+<li>Créer l'interface PatientRepository basée sur Spring Data</li>
+<li>Configurer l'application (application properties)</li>
+<li>Créer le contrôleur Spring MVC</li>
+</ol>
+<h3>Procédure effectuée :</h3>
 <ol>
 <li>Créer un projet spring boot avec les dépendances Web, Spring Data JPA, H2,
 Lombock, Thymeleaf</li>
@@ -68,5 +79,16 @@ et les roles qui seront ajoutés à la base de données.</p>
 <img src="captures/jdbcUserDetailsManager.png">
 <p>Dans la classe HopitalWebApplication :</p>
 <img src="captures/jdbc_CLR.png"/>
-<li></li>
+<li><h3>UserDetailsService</h3></li>
+<p>L'utilisation de UserDetailsService offre une grande flexibilité car elle permet de charger les détails de l'utilisateur à partir de différentes sources de données tout en intégrant cette logique au processus d'authentification de Spring Security. Cela permet une gestion efficace et personnalisée des utilisateurs dans votre application.</p>
+<p>En général, on commence par créer une interface AccountService qui va contenir les méthoders pour ajouter les utilisateurs et leur roles et même affecter un rôle à un utilisateur ou bien le supprimer.</p>
+<img src="captures/accoutServiceInterface.png">
+<p>Puis on implémente cette interface pour ajouter notre Code</p>
+<img src="captures/AccountServiceImpl.png">
+<p>UserDetailsService est une interface fondamentale de Spring Security utilisée pour charger les détails de l'utilisateur lors de l'authentification. Son rôle principal est de récupérer les informations spécifiques d'un utilisateur (telles que les informations d'identification, les rôles, les autorisations) à partir d'une source de données, souvent une base de données ou tout autre système de stockage.</p>
+<img src="captures/userDetailsService.png" />
+<p>Maintenant, pour ajouter des utilisateurs dans notre base de données, on doit executer cette méthode :</p>
+<img src="captures/accountServiceUsage.png" />
 </ol>
+<h3>Conclusion</h3>
+<p>Cette application Spring Boot avec Spring Security offre une gestion robuste des patients tout en mettant l'accent sur la sécurité. En intégrant des fonctionnalités flexibles, telles que la pagination et la recherche, et en personnalisant l'authentification avec InMemoryAuthentication, JdbcAuthentication et UserDetailsService, l'application allie efficacité, adaptabilité et sécurité.</p>
