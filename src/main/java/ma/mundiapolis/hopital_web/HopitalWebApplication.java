@@ -56,7 +56,7 @@ public class HopitalWebApplication {
     }
 
 
-    //@Bean
+    @Bean
     CommandLineRunner commandLineRunnerUserDetails(AccountService accountService){
         return args -> {
             accountService.addnewRole("USER");

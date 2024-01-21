@@ -53,7 +53,7 @@ public class SecurityConfig {
         //httpSecurity.authorizeHttpRequests().requestMatchers("/admin/**").hasRole("ADMIN");
         httpSecurity.authorizeHttpRequests().anyRequest().authenticated();
         httpSecurity.exceptionHandling().accessDeniedPage("/notAuthorized");
-        httpSecurity.userDetailsService(userDetailServiceImpl);
+        //httpSecurity.userDetailsService(userDetailServiceImpl);
         return httpSecurity.build();
     }
 }
